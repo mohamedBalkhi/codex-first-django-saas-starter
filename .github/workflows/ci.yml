@@ -20,6 +20,7 @@ jobs:
       POSTGRES_HOST: localhost
       POSTGRES_HOST_PORT: "5433"
       POSTGRES_PORT: "5433"
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
