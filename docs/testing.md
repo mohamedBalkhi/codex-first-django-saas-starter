@@ -19,7 +19,7 @@ docker compose up -d db
 Run tests:
 
 ```bash
-POSTGRES_HOST=localhost pytest
+POSTGRES_HOST=localhost POSTGRES_PORT=5433 pytest
 ```
 
 ## Running Tests In CI

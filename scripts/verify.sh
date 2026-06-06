@@ -6,6 +6,7 @@ cd "$ROOT_DIR"
 
 ./scripts/bootstrap-env.sh
 docker compose config >/dev/null
+docker compose up -d db
 
 if [ ! -d ".venv" ]; then
   python3 -m venv .venv
@@ -19,8 +20,8 @@ else
   python -m pip install --disable-pip-version-check --no-input --progress-bar off --prefer-binary --timeout 300 --retries 5 -r requirements.txt
 fi
 
-POSTGRES_HOST="${POSTGRES_HOST:-localhost}" python manage.py check
-POSTGRES_HOST="${POSTGRES_HOST:-localhost}" pytest
+POSTGRES_HOST="${POSTGRES_HOST:-localhost}" POSTGRES_PORT="${POSTGRES_HOST_PORT:-5433}" python manage.py check
+POSTGRES_HOST="${POSTGRES_HOST:-localhost}" POSTGRES_PORT="${POSTGRES_HOST_PORT:-5433}" pytest
 ./scripts/check-docs.sh
 
 echo "Local verification passed"

@@ -31,12 +31,12 @@ make run
 
 ## Environment Variables
 
-Docker Compose reads `.env` when present and also provides safe local defaults. For Docker Compose, `POSTGRES_HOST` should be `db`. For local commands against the Compose database, use `POSTGRES_HOST=localhost`.
+Docker Compose reads `.env` when present and also provides safe local defaults. For Docker Compose, `POSTGRES_HOST` should be `db`. For local commands against the Compose database, use `POSTGRES_HOST=localhost` and `POSTGRES_PORT=5433`. The host port is controlled by `POSTGRES_HOST_PORT` and defaults to `5433` to avoid collisions with a local PostgreSQL server on `5432`.
 
 ## Common Failures
 
 - `docker compose config` fails: run `./scripts/bootstrap-env.sh` and check Docker is installed.
-- `pytest` cannot connect to PostgreSQL: run `docker compose up -d db`.
+- `pytest` cannot connect to PostgreSQL: run `docker compose up -d db` and use `POSTGRES_PORT=5433`.
 - Tenant subdomain does not resolve: use a `.localhost` host such as `school1.localhost`.
 
 ## Commands

@@ -51,6 +51,7 @@ make run
 ```
 
 For local Python commands, use `POSTGRES_HOST=localhost`. For Docker Compose, keep `POSTGRES_HOST=db`.
+Docker Compose exposes PostgreSQL on host port `5433` by default to avoid collisions with a local PostgreSQL server on `5432`.
 
 ## Architecture At A Glance
 

@@ -54,16 +54,16 @@ setup: bootstrap
 	@echo "Setup complete. Activate venv: source $(VENV)/bin/activate"
 
 migrate:
-	POSTGRES_HOST=localhost $(MANAGE) migrate_schemas
+	POSTGRES_HOST=localhost POSTGRES_PORT=$${POSTGRES_HOST_PORT:-5433} $(MANAGE) migrate_schemas
 
 run:
 	$(MANAGE) runserver_plus
 
 test:
-	POSTGRES_HOST=localhost $(PYTEST)
+	POSTGRES_HOST=localhost POSTGRES_PORT=$${POSTGRES_HOST_PORT:-5433} $(PYTEST)
 
 test-cov:
-	POSTGRES_HOST=localhost $(PYTEST) --cov=apps --cov-report=html --cov-report=term
+	POSTGRES_HOST=localhost POSTGRES_PORT=$${POSTGRES_HOST_PORT:-5433} $(PYTEST) --cov=apps --cov-report=html --cov-report=term
 
 verify:
 	./scripts/verify.sh
