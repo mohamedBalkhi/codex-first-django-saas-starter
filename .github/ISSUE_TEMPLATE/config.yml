@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security reports
+    url: https://github.com/mohamedBalkhi
+    about: Report tenant isolation or authentication vulnerabilities privately through the maintainer profile until GitHub private vulnerability reporting is enabled.

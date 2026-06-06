@@ -1,0 +1,26 @@
+name: Documentation issue
+description: Report stale, missing, or confusing documentation.
+title: "docs: "
+labels: ["status: needs triage", "area: docs"]
+body:
+  - type: textarea
+    id: location
+    attributes:
+      label: Location
+      description: Link or path to the affected documentation.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is stale, missing, or confusing?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance criteria
+      description: What docs change would close this issue?
+    validations:
+      required: true

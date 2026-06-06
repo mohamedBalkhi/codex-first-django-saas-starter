@@ -1,0 +1,26 @@
+name: Codex Maintenance
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Maintenance prompt to run
+        required: true
+        type: choice
+        options:
+          - pr-review
+          - docs-sync
+          - release-readiness
+          - issue-triage
+
+jobs:
+  instructions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Show prompt location
+        run: |
+          echo "This workflow documents the manual entrypoint for maintainers who enable the OpenAI Codex GitHub Action."
+          echo "Prompt mode: ${{ inputs.mode }}"
+          echo "Prompt files live in .github/codex/prompts/"
+          echo "Do not add OPENAI_API_KEY unless you intentionally enable Codex automation."
