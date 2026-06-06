@@ -26,8 +26,17 @@ services:
              python manage.py collectstatic --noinput"
     environment:
       - DJANGO_SETTINGS_MODULE=config.settings.development
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:-django-insecure-local-development-key}
+      - DJANGO_DEBUG=${DJANGO_DEBUG:-True}
+      - DJANGO_ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS:-localhost,127.0.0.1,.localhost}
+      - POSTGRES_DB=${POSTGRES_DB:-multitenant_db}
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
     env_file:
-      - .env
+      - path: .env
+        required: false
     depends_on:
       db:
         condition: service_healthy
@@ -48,11 +57,20 @@ services:
       - "8000:8000"
     environment:
       - DJANGO_SETTINGS_MODULE=config.settings.development
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:-django-insecure-local-development-key}
+      - DJANGO_DEBUG=${DJANGO_DEBUG:-True}
+      - DJANGO_ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS:-localhost,127.0.0.1,.localhost}
+      - POSTGRES_DB=${POSTGRES_DB:-multitenant_db}
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
       - PYTHONUNBUFFERED=1
       # Enable Watchdog for better file change detection
       - WERKZEUG_DEBUG_PIN=off
     env_file:
-      - .env
+      - path: .env
+        required: false
     depends_on:
       db:
         condition: service_healthy
