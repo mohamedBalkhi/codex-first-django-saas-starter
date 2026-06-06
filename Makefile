@@ -2,6 +2,7 @@ PYTHON ?= python3
 VENV ?= .venv
 DOCKER_COMPOSE ?= docker compose
 PIP := $(VENV)/bin/python -m pip
+PIP_FLAGS := --disable-pip-version-check --no-input --progress-bar off --prefer-binary --timeout 300 --retries 5
 MANAGE := $(VENV)/bin/python manage.py
 PYTEST := $(VENV)/bin/pytest
 
@@ -44,8 +45,8 @@ bootstrap:
 
 setup: bootstrap
 	$(PYTHON) -m venv $(VENV)
-	$(PIP) install --upgrade pip
-	$(PIP) install -r requirements.txt
+	$(PIP) install $(PIP_FLAGS) --upgrade pip
+	$(PIP) install $(PIP_FLAGS) -r requirements.txt
 	@echo "Setup complete. Activate venv: source $(VENV)/bin/activate"
 
 migrate:
