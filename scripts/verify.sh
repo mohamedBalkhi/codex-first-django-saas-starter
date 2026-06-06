@@ -12,8 +12,12 @@ if [ ! -d ".venv" ]; then
 fi
 
 source .venv/bin/activate
-python -m pip install --disable-pip-version-check --no-input --progress-bar off --prefer-binary --timeout 300 --retries 5 --upgrade pip
-python -m pip install --disable-pip-version-check --no-input --progress-bar off --prefer-binary --timeout 300 --retries 5 -r requirements.txt
+if command -v uv >/dev/null 2>&1; then
+  UV_HTTP_TIMEOUT=300 uv pip install --python .venv/bin/python -r requirements.txt
+else
+  python -m pip install --disable-pip-version-check --no-input --progress-bar off --prefer-binary --timeout 300 --retries 5 --upgrade pip
+  python -m pip install --disable-pip-version-check --no-input --progress-bar off --prefer-binary --timeout 300 --retries 5 -r requirements.txt
+fi
 
 POSTGRES_HOST="${POSTGRES_HOST:-localhost}" python manage.py check
 POSTGRES_HOST="${POSTGRES_HOST:-localhost}" pytest

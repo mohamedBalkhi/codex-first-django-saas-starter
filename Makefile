@@ -45,8 +45,12 @@ bootstrap:
 
 setup: bootstrap
 	$(PYTHON) -m venv $(VENV)
-	$(PIP) install $(PIP_FLAGS) --upgrade pip
-	$(PIP) install $(PIP_FLAGS) -r requirements.txt
+	@if command -v uv >/dev/null 2>&1; then \
+		UV_HTTP_TIMEOUT=300 uv pip install --python $(VENV)/bin/python -r requirements.txt; \
+	else \
+		$(PIP) install $(PIP_FLAGS) --upgrade pip; \
+		$(PIP) install $(PIP_FLAGS) -r requirements.txt; \
+	fi
 	@echo "Setup complete. Activate venv: source $(VENV)/bin/activate"
 
 migrate:
