@@ -6,7 +6,24 @@ cd "$ROOT_DIR"
 
 ./scripts/bootstrap-env.sh
 docker compose config >/dev/null
-docker compose up -d db
+
+start_db() {
+  local attempt
+  for attempt in 1 2 3; do
+    if docker compose up -d db; then
+      return 0
+    fi
+
+    echo "Database container failed to start on attempt ${attempt}; retrying..." >&2
+    docker compose down --remove-orphans >/dev/null 2>&1 || true
+    sleep $((attempt * 10))
+  done
+
+  echo "Database container failed to start after 3 attempts" >&2
+  return 1
+}
+
+start_db
 
 if [ ! -d ".venv" ]; then
   python3 -m venv .venv
@@ -21,6 +38,8 @@ else
 fi
 
 POSTGRES_HOST="${POSTGRES_HOST:-localhost}" POSTGRES_PORT="${POSTGRES_HOST_PORT:-5433}" python manage.py check
+POSTGRES_HOST="${POSTGRES_HOST:-localhost}" POSTGRES_PORT="${POSTGRES_HOST_PORT:-5433}" python manage.py migrate_schemas --shared
+POSTGRES_HOST="${POSTGRES_HOST:-localhost}" POSTGRES_PORT="${POSTGRES_HOST_PORT:-5433}" python manage.py migrate_schemas
 POSTGRES_HOST="${POSTGRES_HOST:-localhost}" POSTGRES_PORT="${POSTGRES_HOST_PORT:-5433}" pytest
 ./scripts/check-docs.sh
 
