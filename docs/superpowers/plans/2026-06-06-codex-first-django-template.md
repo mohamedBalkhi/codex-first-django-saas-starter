@@ -1377,7 +1377,7 @@ Run:
 
 ```bash
 gh auth status
-gh repo view mohamedBalkhi/Django-Multi-Tenant-SaaS-Starter-Template --json nameWithOwner,url
+gh repo view mohamedBalkhi/codex-first-django-saas-starter --json nameWithOwner,url
 ```
 
 Expected: authenticated as `mohamedBalkhi`, repo URL prints.
@@ -1612,7 +1612,7 @@ Expected: the eight issue titles appear.
 Run:
 
 ```bash
-gh repo edit mohamedBalkhi/Django-Multi-Tenant-SaaS-Starter-Template \
+gh repo edit mohamedBalkhi/codex-first-django-saas-starter \
   --description "Codex-first Django multi-tenant SaaS starter with PostgreSQL schema isolation, DRF, JWT, Docker, CI, and repo-local agent workflows." \
   --add-topic codex \
   --add-topic agentic-workflows \

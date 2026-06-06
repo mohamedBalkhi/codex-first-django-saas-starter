@@ -1,7 +1,7 @@
 # Codex-First Django Multi-Tenant Starter Design
 
 Date: 2026-06-06
-Repo: `mohamedBalkhi/Django-Multi-Tenant-SaaS-Starter-Template`
+Repo: `mohamedBalkhi/codex-first-django-saas-starter`
 Target release: `v0.2.0`
 
 ## Purpose

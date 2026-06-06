@@ -5,8 +5,8 @@ Thanks for improving the Codex-first Django multi-tenant SaaS starter.
 ## Development Setup
 
 ```bash
-git clone https://github.com/mohamedBalkhi/Django-Multi-Tenant-SaaS-Starter-Template.git
-cd Django-Multi-Tenant-SaaS-Starter-Template
+git clone https://github.com/mohamedBalkhi/codex-first-django-saas-starter.git
+cd codex-first-django-saas-starter
 ./scripts/bootstrap-env.sh
 make setup
 ```

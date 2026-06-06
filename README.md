@@ -1,6 +1,6 @@
 # Codex-First Django Multi-Tenant SaaS Starter
 
-[![CI](https://github.com/mohamedBalkhi/Django-Multi-Tenant-SaaS-Starter-Template/actions/workflows/ci.yml/badge.svg)](https://github.com/mohamedBalkhi/Django-Multi-Tenant-SaaS-Starter-Template/actions/workflows/ci.yml)
+[![CI](https://github.com/mohamedBalkhi/codex-first-django-saas-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/mohamedBalkhi/codex-first-django-saas-starter/actions/workflows/ci.yml)
 [![Django](https://img.shields.io/badge/Django-5.0-0C4B33?logo=django&logoColor=white)](https://www.djangoproject.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-schema%20isolation-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![Codex Ready](https://img.shields.io/badge/Codex--first-agent%20workflows-111827)](AGENTS.md)
@@ -24,7 +24,7 @@ The goal is not "AI-generated Django code." The goal is a Django repository that
 | Skills | [`.agents/skills/`](.agents/skills) | Reusable workflows for tenant strategy, verification, docs sync, issue curation, tests, and PR summaries. |
 | Prompts | [`.github/codex/prompts/`](.github/codex/prompts) | Optional maintainer prompts for PR review, docs sync, release readiness, and issue triage. |
 | CI | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | Runs the same repository verification path that maintainers run locally. |
-| Issues | [Public issue backlog](https://github.com/mohamedBalkhi/Django-Multi-Tenant-SaaS-Starter-Template/issues) | Turns the template into an open-source project with clear contribution paths. |
+| Issues | [Public issue backlog](https://github.com/mohamedBalkhi/codex-first-django-saas-starter/issues) | Turns the template into an open-source project with clear contribution paths. |
 
 ## The Maintenance Loop
 
@@ -167,7 +167,7 @@ The public backlog is intentionally curated for useful contributions:
 - Tenant-aware fixture factories.
 - JWT security hardening.
 
-See [docs/public-issues.md](docs/public-issues.md) and the live [GitHub issues](https://github.com/mohamedBalkhi/Django-Multi-Tenant-SaaS-Starter-Template/issues).
+See [docs/public-issues.md](docs/public-issues.md) and the live [GitHub issues](https://github.com/mohamedBalkhi/codex-first-django-saas-starter/issues).
 
 ## Roadmap
 
